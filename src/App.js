@@ -1,9 +1,15 @@
 import './App.css';
-import Inputs from './Inputs';
+import PrimerInput from './PrimerInput';
+import SegundoInput from './SegundoInput';
+import Display from './Display';
 
 function App() {
   return (
-    <Inputs/>
+    <>
+      <PrimerInput/>
+      <SegundoInput/>
+      <Display/>
+    </>
   );
 }
 
