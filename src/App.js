@@ -1,14 +1,12 @@
 import './App.css';
-import PrimerInput from './PrimerInput';
-import SegundoInput from './SegundoInput';
-import Display from './Display';
+import Design from './Design';
+
+
 
 function App() {
   return (
     <>
-      <PrimerInput/>
-      <SegundoInput/>
-      <Display/>
+      <Design/>
     </>
   );
 }
