@@ -9,7 +9,7 @@ function PrimerInput(){
     return(
         <>
         <div>
-            <label>Ingrese el primer numero:</label><input type="number" id="primer-numero" className="number-inputs" value={firstNumber} onInput={inputFirstNumber} onChange={test}></input>
+            <label>Ingrese el primer numero:</label><input type="number" id="primer-numero" className="number-inputs" value={firstNumber} onInput={inputFirstNumber}></input>
             <button>Clear</button>
         </div>
         </>
