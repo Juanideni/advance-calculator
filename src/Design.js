@@ -2,8 +2,8 @@ import { useState } from "react"
 
 
 function Design(){
-    let [firstNumber,setFirstNumber] = useState()
-    let [secondNumber, setSecondNumber] = useState()
+    let [firstNumber,setFirstNumber] = useState(null)
+    let [secondNumber, setSecondNumber] = useState(null)
     
 
     function inputFirstNumber(props){
@@ -13,34 +13,36 @@ function Design(){
         setSecondNumber(props.target.value)
     }
 
-    function clearFirstInput(){
-        setFirstNumber(0)
+    function clearFirstInput(props){
+
+        setFirstNumber(props.target.value = "")
     }
-    function clearSecondInput(){
-        setSecondNumber(0)
+    function clearSecondInput(props){
+        setSecondNumber(props.target.value = "")
     }
 
-    
 
     return(
         <>
-        <div>
+        <div className="inputs">
+            <div className="first-input">
             <label>Ingrese el primer numero:</label><input type="number" id="primer-numero" className="number-inputs" value={firstNumber} onInput={inputFirstNumber}></input>
-            <button onClick={clearFirstInput}>Clear</button>
-        </div>
-        <div>
+            <button onClick={clearFirstInput} className="button-clear">Clear</button>
+            </div>
+            <div className="second-input">
             <label>Ingrese el segundo numero:</label><input type="number" id="primer-numero" className="number-inputs" value={secondNumber} onInput={inputSecondNumber}></input>
-            <button onClick={clearSecondInput}>Clear</button>
+            <button onClick={clearSecondInput} className="button-clear">Clear</button>
+            </div>
         </div>
         <div>
             <ul>
-                <li><h3>- Suma: <span id="suma">{firstNumber+"+"+secondNumber+"= "+Number((firstNumber*1)+(secondNumber *1))}</span></h3></li>
-                <li><h3>- Resta: <span id="resta">{firstNumber+"-"+secondNumber+"= "+Number(firstNumber-secondNumber)}</span></h3></li>
-                <li><h3>- Multiplicacion: <span id="multiplicacion">{firstNumber+"*"+secondNumber+"= "+firstNumber*secondNumber}</span></h3></li>
-                <li><h3>- Division: <span id="division"></span>{firstNumber+"/"+secondNumber+"= "+firstNumber/secondNumber}</h3></li>
-                <li><h3>- Potencia: <span id="potencia"></span>{firstNumber+"^"+secondNumber+"= "+Math.pow(firstNumber, secondNumber)}</h3></li>
-                <li><h3>- Raiz cuadrada: <span id="raiz cuadrada">{firstNumber+" √"+secondNumber+"= "+Math.pow(firstNumber, (1/secondNumber))}</span></h3></li>
-                <li><h3>- Hipotenusa: <span id="hipotenusa">{"("+firstNumber+")^2 + ("+secondNumber+")^2= "+Number((firstNumber*firstNumber)+(secondNumber*secondNumber))}</span></h3></li>
+                <li><h3>- Suma: <span id="suma">{(firstNumber === null || secondNumber === null) ? "" : firstNumber+"+"+secondNumber+"= "+Number((firstNumber*1)+(secondNumber *1))}</span></h3></li>
+                <li><h3>- Resta: <span id="resta">{(firstNumber === null || secondNumber === null) ? "" : firstNumber+"-"+secondNumber+"= "+Number(firstNumber-secondNumber)}</span></h3></li>
+                <li><h3>- Multiplicacion: <span id="multiplicacion">{ (firstNumber === null || secondNumber === null) ? "" : firstNumber+"*"+secondNumber+"= "+firstNumber*secondNumber}</span></h3></li>
+                <li><h3>- Division: <span id="division">{(firstNumber === null || secondNumber === null) ? "" : (secondNumber === 0 && firstNumber === 0) ? "0/0 = Indeterminado" : firstNumber+"/"+secondNumber+ "= " + firstNumber/secondNumber}</span></h3></li>
+                <li><h3>- Potencia: <span id="potencia">{ (firstNumber === null || secondNumber === null) ? "" : firstNumber+"^"+secondNumber+"= "+Math.pow(firstNumber, secondNumber)}</span></h3></li>
+                <li><h3>- Raiz: <span id="raiz cuadrada">{(firstNumber === null || secondNumber === null) ? "" :  (secondNumber === 0) ? "No existe raiz de cero" :  secondNumber+" √"+firstNumber+"= "+Math.pow(firstNumber, (1/secondNumber))}</span></h3></li>
+                <li><h3>- Hipotenusa: <span id="hipotenusa">{(firstNumber === null || secondNumber === null) ? "" : "("+firstNumber+")^2 + ("+secondNumber+")^2= "+Number((firstNumber*firstNumber)+(secondNumber*secondNumber))}</span></h3></li>
             </ul>
         </div>
         </>
