@@ -2,23 +2,22 @@ import { useState } from "react"
 
 
 function Design(){
-    let [firstNumber,setFirstNumber] = useState(null)
-    let [secondNumber, setSecondNumber] = useState(null)
+    let [firstNumber,setFirstNumber] = useState(0)
+    let [secondNumber, setSecondNumber] = useState(0)
     
 
     function inputFirstNumber(props){
-       setFirstNumber(props.target.value)
+       setFirstNumber(Number(props.target.value))
     }
     function inputSecondNumber(props){
-        setSecondNumber(props.target.value)
+        setSecondNumber(Number(props.target.value))
     }
 
-    function clearFirstInput(props){
-
-        setFirstNumber(props.target.value = null)
+    function clearFirstInput(){
+        setFirstNumber(0)
     }
-    function clearSecondInput(props){
-        setSecondNumber(props.target.value = null)
+    function clearSecondInput(){
+        setSecondNumber(0)
     }
 
 
@@ -26,7 +25,8 @@ function Design(){
         <>
         <div className="inputs">
             <div className="first-input">
-            <label>Ingrese el primer numero:</label><input type="number" id="primer-numero" className="number-inputs" value={firstNumber} onInput={inputFirstNumber}></input>
+            <label>Ingrese el primer numero:</label>
+            <input type="number" id="primer-numero" className="number-inputs" value={firstNumber} onInput={inputFirstNumber}></input>
             <button onClick={clearFirstInput} className="button-clear">Clear</button>
             </div>
             <div className="second-input">
@@ -36,7 +36,7 @@ function Design(){
         </div>
         <div>
             <ul>
-            <li><h3>- Suma: <span id="suma">{(firstNumber === null || secondNumber === null) ? "" : firstNumber+"+"+secondNumber+"= "+Number((firstNumber*1)+(secondNumber *1))}</span></h3></li>
+            <li><h3>- Suma: <span id="suma">{(firstNumber === null || secondNumber === null) ? "" : firstNumber+"+"+secondNumber+"= "+Number(firstNumber + secondNumber)}</span></h3></li>
             <li><h3>- Resta: <span id="resta">{(firstNumber === null || secondNumber === null) ? "" : firstNumber+"-"+secondNumber+"= "+Number(firstNumber-secondNumber)}</span></h3></li>
             <li><h3>- Multiplicacion: <span id="multiplicacion">{ (firstNumber === null || secondNumber === null) ? "" : firstNumber+"*"+secondNumber+"= "+firstNumber*secondNumber}</span></h3></li>
             <li><h3>- Division: <span id="division">{(firstNumber === null || secondNumber === null) ? "" :
